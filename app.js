@@ -4,9 +4,12 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs')
 
+//----CONFIG-------
+
 dotenv.config({ path: './.env'});
 
 const port = process.env.PORT;
+const address = process.env.IP;
 
 app = express();
 
@@ -18,6 +21,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 let data = {logged: 'no'};
+
+//----ENDCONFIG----
+
+//----GET----------
 
 app.get('/', function(req, res){
     res.render("page", {pageToRender: 'userpage.ejs',
@@ -33,6 +40,10 @@ app.get('/login', function(req, res){
     res.render("page", {pageToRender: 'login.ejs'});
 });
 
+//----ENDGET-------
+
+//----POST---------
+
 app.post('/auth/register', function(req, res){
     const {name, email, password, password_confirm} = req.body
     console.log(req.body);
@@ -44,6 +55,12 @@ app.post('/auth/login', function(req, res){
     res.redirect('/')
 });
 
-app.listen(port || 3000, '192.168.0.10', function(){
-    console.log('listening at port ' + port)
+//----ENDPOST------
+
+//----LISTEN-------
+
+app.listen(port || 3000, address, function(){
+    console.log('listening at ' + address + ":" + port)
 });
+
+//----ENDLISTEN----
