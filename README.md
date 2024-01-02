@@ -22,16 +22,18 @@ bcrypt;
 ### Setup
 Using npm:
 
-`npm init -y`
+```bash
+$ npm init -y
+```
 
 
 Create .env file using GitBash:
 
-```
-touch .env
+```bash
+$ touch .env
 ```
 
-```
+```javascript
 PORT = 3000 
 IP = '127.0.0.1'
 ```
